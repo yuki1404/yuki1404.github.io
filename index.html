@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="//cdn.staticfile.org/bootstrap/4.6.1/css/bootstrap.min.css">
+    <script src="//cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
     <script src="data/20230704-花式表演.js"></script>
     <script src="data/20230704-花式疯狂.js"></script>
     <script src="data/20230704-花式情侣.js"></script>
@@ -29,32 +29,32 @@
 
 <script>
 var 只看宅舞=false;
-$("#花式表演").click(function() {	显示歌单(花式表演, "花式表演")});
-$("#花式疯狂").click(function() {	显示歌单(花式疯狂, "花式疯狂")});
-$("#花式情侣").click(function() {	显示歌单(花式情侣, "花式情侣")});
+$("#花式表演")。click(function() {	显示歌单(花式表演, "花式表演")});
+$("#花式疯狂")。click(function() {	显示歌单(花式疯狂, "花式疯狂")});
+$("#花式情侣")。click(function() {	显示歌单(花式情侣, "花式情侣")});
 
-$("#只看宅舞").click(function() {
+$("#只看宅舞")。click(function() {
 		if(只看宅舞){
 			只看宅舞=false;
-			$(this).removeClass("btn-success").addClass("btn-outline-success");
+			$(this)。removeClass("btn-success")。addClass("btn-outline-success");
 		}else{
 			只看宅舞=true;
-			$(this).removeClass("btn-outline-success").addClass("btn-success");
+			$(this)。removeClass("btn-outline-success")。addClass("btn-success");
 		}
-		$(".btn-primary").click();
+		$(".btn-primary")。click();
 });
 
 
-$(".btn-outline-primary").click(function() {
-		$(this).removeClass("btn-outline-primary").addClass("btn-primary");
-		$(".btn-primary").not(this).removeClass("btn-primary").addClass("btn-outline-primary");
+$(".btn-outline-primary")。click(function() {
+		$(this)。removeClass("btn-outline-primary")。addClass("btn-primary");
+		$(".btn-primary")。not(this)。removeClass("btn-primary")。addClass("btn-outline-primary");
 });
     
-function 显示歌单(file, title) 
+function 显示歌单(file， title) 
 {
-	$("title").text(title);
-	$("#歌曲列表").empty();
-	$.each(file, function(i, item) {
+	$("title")。text(title);
+	$("#歌曲列表")。空的();
+	$.each(file, function(i， item) {
 	if(只看宅舞&宅舞序列.every(function (检测序号){if(item.songId==检测序号)return false;else return true;}))return;
 	
 	var html = "";
@@ -77,7 +77,7 @@ function 显示歌单(file, title)
 	if(item.songMp3Url!=""){html +=`试听：<a href= "${item.songMp3Url}" target=_blank><span class="badge badge-info"><font size="2">试听</font></span>`;}
 	
 	html +=`</div></div></div></div></div>`;
-	$("#歌曲列表").append(html);
+	$("#歌曲列表")。append(html);
 	});}
 </script>
 </body>
