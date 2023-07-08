@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="data/20230704-花式表演.js"></script>
+    <script src="data/20230704-花式疯狂.js"></script>
+    <script src="data/20230704-花式情侣.js"></script>
+    <script src="data/宅舞序列.js"></script>
+    <title>E舞列表</title>
+</head>
+<body>
+
+<style type="text/css">
+    .card img {
+        width:100%;
+    }
+</style>
+<div class="container pt-3">
+    <button class="btn btn-outline-primary" id="花式表演">花式表演</button>
+    <button class="btn btn-outline-primary" id="花式疯狂">花式疯狂</button>
+    <button class="btn btn-outline-primary" id="花式情侣">花式情侣</button>
+    <br><br>
+    <button class="btn btn-outline-success" id="只看宅舞">只看宅舞</button>
+    <div id="歌曲列表"></div>
+</div>
+
+<script>
+var 只看宅舞=false;
+$("#花式表演").click(function() {	显示歌单(花式表演, "花式表演")});
+$("#花式疯狂").click(function() {	显示歌单(花式疯狂, "花式疯狂")});
+$("#花式情侣").click(function() {	显示歌单(花式情侣, "花式情侣")});
+
+$("#只看宅舞").click(function() {
+		if(只看宅舞){
+			只看宅舞=false;
+			$(this).removeClass("btn-success").addClass("btn-outline-success");
+		}else{
+			只看宅舞=true;
+			$(this).removeClass("btn-outline-success").addClass("btn-success");
+		}
+		$(".btn-primary").click();
+});
+
+
+$(".btn-outline-primary").click(function() {
+		$(this).removeClass("btn-outline-primary").addClass("btn-primary");
+		$(".btn-primary").not(this).removeClass("btn-primary").addClass("btn-outline-primary");
+});
+    
+function 显示歌单(file, title) 
+{
+	$("title").text(title);
+	$("#歌曲列表").empty();
+	$.each(file, function(i, item) {
+	if(只看宅舞&宅舞序列.every(function (检测序号){if(item.songId==检测序号)return false;else return true;}))return;
+	
+	var html = "";
+	html =`
+		<div class="col-12 pt-3 p-2">
+			<div class="card">
+				<div class="row no-gutters">
+					<div class="col-4">
+						<img src="img/${item.songPicUrl}" alt="图片不见啦">
+					</div>
+					<div class="col-8">
+						<div class="card-header pt-1 pb-1 pl-2 pr-2 text-truncate">
+							<H5>${item.songName}</H5>
+						</div>
+						<div class="card-body p-2">
+							序号：<span class="badge badge-primary"><font size="2">${item.thisIndex}</font></span><br/>
+							等级：<span class="badge badge-warning"><font size="2">${item.star}星</font></span><br/>
+							序列号：${item.songId}<br/>
+	`;
+	if(item.songMp3Url!=""){html +=`试听：<a href= "${item.songMp3Url}" target=_blank><span class="badge badge-info"><font size="2">试听</font></span>`;}
+	
+	html +=`</div></div></div></div></div>`;
+	$("#歌曲列表").append(html);
+	});}
+</script>
+</body>
+</html>
