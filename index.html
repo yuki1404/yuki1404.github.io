@@ -70,8 +70,8 @@ function 显示歌单(file, title)
 							<H5>${item.songName}</H5>
 						</div>
 						<div class="card-body p-2">
-							<div style="position:absolute;left:8;">序号：<span class="badge badge-primary"><font size="2">${item.thisIndex}</font></span></div>		
-							<div style="position:absolute;right:8;">序列号：${item.songId}</div><br/>
+							<div style="position:absolute;left:8px;">序号：<span class="badge badge-primary"><font size="2">${item.thisIndex}</font></span></div>		
+							<div style="position:absolute;right:8px;">序列号：${item.songId}</div><br/>
        等级：<span class="badge badge-warning"><font size="2">${item.star}星</font></span>
 	`;
 	if(item.songMp3Url!=""){html +=`试听：<a href= "${item.songMp3Url}" target=_blank><span class="badge badge-info"><font size="2">试听</font></span></a>`;}
